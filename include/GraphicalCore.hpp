@@ -10,7 +10,7 @@
 class GraphicalCore
 {
 public:
-    void Run(int ac, char **av, Options *options);
+    bool Run(int ac, char **av, Options *options);
     static void UpdateGl();
     static void _KeyboardHandle(unsigned char key, int x, int y)
     {
@@ -30,7 +30,7 @@ private:
 public:
     static GraphicalCore* Instance()
     {
-        if (instance == 0)
+        if (instance == nullptr)
         {
             instance = new GraphicalCore();
         }

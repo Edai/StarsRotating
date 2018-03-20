@@ -5,22 +5,18 @@
 #include "Application.hpp"
 #include "GraphicalCore.hpp"
 
-Application::Application()
-{
-}
+Application::Application() = default;
 
-Application::~Application()
-{
-}
+Application::~Application() = default;
 
 bool Application::Parse(Options *options, int ac, char** av)
 {
     static struct option long_options[] =
             {
-                    {"height", required_argument , 0, 'h'},
-                    {"width",  required_argument, 0, 'w'},
-                    {"title",   required_argument, 0, 't'},
-                    {0, 0, 0, 0}
+                    {"height", required_argument, nullptr, 'h'},
+                    {"width",  required_argument, nullptr, 'w'},
+                    {"title",  required_argument, nullptr, 't'},
+                    {nullptr, 0,                  nullptr, 0}
             };
     int option_index = 0;
     int c = getopt_long_only(ac, av, "h:w:t:",
@@ -57,10 +53,11 @@ bool Application::Parse(Options *options, int ac, char** av)
 
 void Application::Start(int ac, char **av)
 {
-    Options *options = new Options();
+    auto *options = new Options();
     GraphicalCore *gc = GraphicalCore::Instance();
 
     if (!Parse(options, ac, av))
         return;
-    gc->Run(ac, av, options);
+    if (!gc->Run(ac, av, options))
+        return;
 }

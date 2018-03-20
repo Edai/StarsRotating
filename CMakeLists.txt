@@ -34,7 +34,9 @@ find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 find_package(SDL REQUIRED)
 
-include_directories(include/ ${SDL_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} $(SOIL_INCLUDE_PATH) ${GLUT_INCLUDE_DIRS} )
+include_directories(include/ ${SDL_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} $(SOIL_INCLUDE_PATH) ${GLUT_INCLUDE_DIRS} glm/)
 
 target_link_libraries(assignment2 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY}
         ${SDL_LIBRARIES} ${SOIL_LIBRARY})
+
+configure_file(star.bmp star.bmp COPYONLY)

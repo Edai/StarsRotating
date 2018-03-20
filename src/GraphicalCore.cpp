@@ -12,12 +12,12 @@ void GraphicalCore::Init()
     glShadeModel(GL_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepth(1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+//    glEnable(GL_DEPTH_TEST);
+//    glDepthFunc(GL_LEQUAL);
+//    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void GraphicalCore::Run(int ac, char **av, Options *options)
+bool GraphicalCore::Run(int ac, char **av, Options *options)
 {
     glutInit(&ac, av);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
@@ -25,10 +25,10 @@ void GraphicalCore::Run(int ac, char **av, Options *options)
     glutInitWindowSize(options->width, options->height);
     glutCreateWindow(options->window_name.c_str());
     Init();
-
     glutIdleFunc(StarEngine::_Update);
     glutKeyboardFunc(GraphicalCore::_KeyboardHandle);
     glutMainLoop();
+    return (true);
 }
 
 void GraphicalCore::UpdateGl()

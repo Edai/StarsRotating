@@ -6,6 +6,18 @@
 #define ASSIGNMENT2_STARENGINE_HPP
 
 #include "GraphicalCore.hpp"
+#include <glm/glm.hpp>
+#include <list>
+
+#define STAR_PATH "star.bmp"
+#define STAR_SIZE 50
+#define NUMBER_STAR 20
+
+struct Star
+{
+    glm::vec2 position;
+    glm::vec3 color;
+};
 
 class StarEngine
 {
@@ -18,8 +30,18 @@ public:
         Instance()->Update();
         GraphicalCore::UpdateGl();
     }
+
 private:
     void Update();
+
+    void DrawStar(Star &s);
+
+    void InitStars();
+
+    void SpiralEffectCalculate();
+
+    GLuint starTexture;
+    std::list<Star> *stars;
 
 #pragma SINGLETON
 private:
@@ -34,7 +56,10 @@ public:
         }
         return instance;
     }
-#pragma
+
+#pragma END SINGLETON
+
 };
+
 
 #endif //ASSIGNMENT2_STARENGINE_HPP

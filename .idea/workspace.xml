@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d19f095-1cdb-492b-89f3-847de8d1523c" name="Default" comment="" />
+    <list default="true" id="7d19f095-1cdb-492b-89f3-847de8d1523c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/assignment2" afterPath="" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -237,12 +239,12 @@
       <workItem from="1521424776542" duration="7949000" />
       <workItem from="1521439839081" duration="2907000" />
       <workItem from="1521511100894" duration="6539000" />
-      <workItem from="1521523973146" duration="4676000" />
+      <workItem from="1521523973146" duration="4745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22071000" />
+    <option name="totallyTimeSpent" value="22140000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

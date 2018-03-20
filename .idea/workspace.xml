@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d19f095-1cdb-492b-89f3-847de8d1523c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/assignment2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphicalCore.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphicalCore.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GraphicalCore.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
@@ -98,6 +99,16 @@
                 <element signature="e#117#383#0" expanded="false" />
                 <element signature="e#875#1100#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,6 +143,7 @@
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/include/GraphicalCore.hpp" />
         <option value="$PROJECT_DIR$/src/GraphicalCore.cpp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -239,12 +251,12 @@
       <workItem from="1521424776542" duration="7949000" />
       <workItem from="1521439839081" duration="2907000" />
       <workItem from="1521511100894" duration="6539000" />
-      <workItem from="1521523973146" duration="4745000" />
+      <workItem from="1521523973146" duration="4789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22140000" />
+    <option name="totallyTimeSpent" value="22184000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -526,6 +538,14 @@
             <element signature="e#117#383#0" expanded="false" />
             <element signature="e#875#1100#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

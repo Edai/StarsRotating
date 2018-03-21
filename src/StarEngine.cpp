@@ -15,8 +15,6 @@ StarEngine::StarEngine()
     glBindTexture(GL_TEXTURE_2D, starTexture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glMatrixMode(GL_PROJECTION);
-    glOrtho(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT), -1, 1);
     InitStars();
 }
 
@@ -28,48 +26,54 @@ void StarEngine::InitStars()
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> color_dis(0.2, 1);
-    std::uniform_real_distribution<> positionX_dis(0, glutGet(GLUT_WINDOW_WIDTH));
-    std::uniform_real_distribution<> positionY_dis(0, glutGet(GLUT_WINDOW_HEIGHT));
+    std::uniform_real_distribution<> color_dis(0.1, 0.9);
+    float num_segments = 64;
+    float r = 0.8f;
 
     stars = new std::list<Star>();
-    for (int i = 0; i < NUMBER_STAR; i++)
+    for (int i = 0; i < num_segments; i += 1)
     {
         Star &s = *(new Star());
         s.color = glm::vec3(color_dis(gen), color_dis(gen), color_dis(gen));
-        s.position = glm::vec2(positionX_dis(gen), positionY_dis(gen));
+        float theta = 6.0f * M_PI * (i / num_segments);
+        s.position = glm::vec2((r / num_segments) * i * cosf(theta), (r / num_segments) * i * sinf(theta));
         stars->push_back(s);
     }
+    std::cout << stars->size() << std::endl;
 }
 
 void StarEngine::DrawStar(Star &s)
 {
-    glBegin(GL_QUADS);
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    float size = STAR_SIZE;
+
     glColor3f(s.color.x, s.color.y, s.color.z);
     glTexCoord2i(0, 1);
-    glVertex2f(s.position.x - STAR_SIZE / 2, s.position.y + STAR_SIZE / 2);
+    glVertex2f(s.position.x - size, s.position.y + size);
     glTexCoord2i(1, 1);
-    glVertex2f(s.position.x + STAR_SIZE / 2, s.position.y + STAR_SIZE / 2);
+    glVertex2f(s.position.x + size, s.position.y + size);
     glTexCoord2i(1, 0);
-    glVertex2f(s.position.x + STAR_SIZE / 2, s.position.y - STAR_SIZE / 2);
+    glVertex2f(s.position.x + size, s.position.y - size);
     glTexCoord2i(0, 0);
-    glVertex2f(s.position.x - STAR_SIZE / 2, s.position.y - STAR_SIZE / 2);
-    glEnd();
-}
-
-void StarEngine::SpiralEffectCalculate()
-{
-
+    glVertex2f(s.position.x - size, s.position.y - size);
 }
 
 void StarEngine::Update()
 {
-    glMatrixMode(GL_MODELVIEW);
     glClear(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_TEXTURE_2D);
-    SpiralEffectCalculate();
-    for (auto &star : *stars)
-        DrawStar(star);
+    glRotatef(GraphicalCore::Rotation, 0, 0, 1);
+
+    glBegin(GL_QUADS);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    for (auto star = stars->begin(); star != stars->end(); star++)
+//    {
+//        auto s = star;
+//        star++;
+//        if (star != stars->end())
+//            s->color = star->color;
+//        else
+//            s->color = stars->begin()->color;
+        DrawStar(*star);
+    // }
+    glEnd();
     glPopMatrix();
 }

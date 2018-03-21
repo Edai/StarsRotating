@@ -15,7 +15,7 @@
 #include <getopt.h>
 #include <string>
 
-#define DEFAULT_WIDTH 1440
+#define DEFAULT_WIDTH 960
 #define DEFAULT_HEIGHT 960
 #define WINDOW_TITLE "Assignment 2"
 

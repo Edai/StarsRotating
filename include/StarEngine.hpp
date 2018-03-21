@@ -10,8 +10,7 @@
 #include <list>
 
 #define STAR_PATH "star.bmp"
-#define STAR_SIZE 50
-#define NUMBER_STAR 20
+#define STAR_SIZE 0.05f
 
 struct Star
 {

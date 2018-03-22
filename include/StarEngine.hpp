@@ -7,14 +7,14 @@
 
 #include "GraphicalCore.hpp"
 #include <glm/glm.hpp>
-#include <list>
+#include <vector>
 
-#define STAR_PATH "star.bmp"
-#define STAR_SIZE 0.05f
+#define STAR_PATH "star.png"
+#define STAR_SIZE 0.15f
 
 struct Star
 {
-    glm::vec2 position;
+    float pos;
     glm::vec3 color;
 };
 
@@ -30,17 +30,18 @@ public:
         GraphicalCore::UpdateGl();
     }
 
+    int oldTimeSinceStart = 0;
+
 private:
     void Update();
 
-    void DrawStar(Star &s);
+    void DrawStar(glm::vec2 &s, glm::highp_vec3 color);
 
     void InitStars();
 
-    void SpiralEffectCalculate();
-
     GLuint starTexture;
-    std::list<Star> *stars;
+    std::vector<Star> stars;
+    std::vector<glm::vec2> starPos;
 
 #pragma SINGLETON
 private:

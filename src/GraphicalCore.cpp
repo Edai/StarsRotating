@@ -5,7 +5,7 @@
 #include <StarEngine.hpp>
 
 GraphicalCore* GraphicalCore::instance = nullptr;
-float GraphicalCore::Rotation = 1.0f;
+float GraphicalCore::Rotation = 0.5f;
 
 void GraphicalCore::Init()
 {
@@ -14,6 +14,8 @@ void GraphicalCore::Init()
     glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glDepthFunc(GL_LEQUAL);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }

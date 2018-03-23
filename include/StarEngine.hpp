@@ -10,7 +10,7 @@
 #include <vector>
 
 #define STAR_PATH "star.png"
-#define STAR_SIZE 0.15f
+#define STAR_SIZE 0.12f
 
 struct Star
 {
@@ -29,8 +29,6 @@ public:
         Instance()->Update();
         GraphicalCore::UpdateGl();
     }
-
-    int oldTimeSinceStart = 0;
 
 private:
     void Update();

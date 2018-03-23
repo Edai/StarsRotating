@@ -27,7 +27,7 @@ void StarEngine::InitStars()
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> color_dis(0.4, 1.0);
+    std::uniform_real_distribution<> color_dis(0.1, 1.0);
     float nb = 1024;
     float r = 1.15f;
 
@@ -38,13 +38,6 @@ void StarEngine::InitStars()
         float theta = 6.0f * (float) M_PI * i / nb;
         starPos.emplace_back(glm::vec2(r / nb * i * cosf(theta),
                                        r / nb * i * sinf(theta)));
-    }
-    for (int i = 0; i < nb; i++)
-    {
-        Star &s = *(new Star());
-        s.pos = i * 20.0f;
-        s.color = glm::vec3(color_dis(gen), color_dis(gen), color_dis(gen));
-        stars.emplace_back(s);
     }
 }
 
@@ -65,14 +58,34 @@ void StarEngine::DrawStar(glm::vec2 &s, glm::highp_vec3 color)
 
 void StarEngine::Update()
 {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::uniform_real_distribution<> color_dis(0.1, 1.0);
+    static int i = 0;
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glBegin(GL_QUADS);
     glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    for (auto s = stars.end(); s != stars.begin(); s--)
+    if (i % GraphicalCore::Rotation == 0 && stars.size() < 51)
     {
-        DrawStar(starPos[s->pos], s->color);
-        s->pos >= starPos.size() ? s->pos = 0 : s->pos++;
+        Star &s = *(new Star());
+        s.pos = 0;
+        s.color = glm::vec3(color_dis(gen), color_dis(gen), color_dis(gen));
+        stars.emplace_back(s);
+    }
+    for (auto star = stars.begin(); star != stars.end(); star++)
+    {
+        DrawStar(starPos[star->pos], star->color);
+        if (star->pos >= starPos.size())
+        {
+            star->pos = 0;
+            Star s = *star;
+            stars.erase(star);
+            stars.push_back(s);
+        } else
+            star->pos++;
     }
     glEnd();
     glPopMatrix();
+    i++;
 }

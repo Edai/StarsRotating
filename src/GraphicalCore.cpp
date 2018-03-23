@@ -5,7 +5,7 @@
 #include <StarEngine.hpp>
 
 GraphicalCore* GraphicalCore::instance = nullptr;
-float GraphicalCore::Rotation = 0.5f;
+int GraphicalCore::Rotation = 20;
 
 void GraphicalCore::Init()
 {
@@ -49,10 +49,8 @@ void GraphicalCore::KeyboardHandle(unsigned char key, int x, int y)
             glutLeaveMainLoop();
             break;
         case 'w':
-            Rotation += 0.5f;
             break;
         case 's':
-            Rotation -= 0.5f;
             break;
         default:
             return;

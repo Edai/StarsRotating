@@ -17,7 +17,7 @@ public:
         GraphicalCore::Instance()->KeyboardHandle(key, x, y);
     }
 
-    static float Rotation;
+    static int Rotation;
 
 private:
     void Init();

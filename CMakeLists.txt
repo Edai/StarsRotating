@@ -32,11 +32,9 @@ ENDIF(SOIL_INCLUDE_PATH AND SOIL_LIBRARY)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
-find_package(SDL REQUIRED)
 
-include_directories(include/ ${SDL_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS} $(SOIL_INCLUDE_PATH) ${GLUT_INCLUDE_DIRS} glm/)
+include_directories(include/ ${OPENGL_INCLUDE_DIRS} $(SOIL_INCLUDE_PATH) ${GLUT_INCLUDE_DIRS} glm/)
 
-target_link_libraries(assignment2 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY}
-        ${SDL_LIBRARIES} ${SOIL_LIBRARY})
+target_link_libraries(assignment2 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${SOIL_LIBRARY})
 
 configure_file(star.png star.png COPYONLY)
